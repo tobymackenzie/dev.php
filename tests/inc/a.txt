@@ -1,0 +1,19 @@
+object(TJM\Dev\DumpValue)#{{id}} (4) {
+  ["type"]=>
+  string(5) "class"
+  ["name"]=>
+  string(15) "TJM\Dev\Tests\A"
+  ["file"]=>
+  string(51) "{{testsPath}}/inc/A.php:4-12"
+  ["content"]=>
+  string(144) "class A{
+	protected $a = 'aye';
+	public function getA(){
+		return $this->a;
+	}
+	static public function stat($val){
+		echo 'stat: ' . $val;
+	}
+}
+"
+}

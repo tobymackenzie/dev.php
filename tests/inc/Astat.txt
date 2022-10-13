@@ -1,0 +1,13 @@
+object(TJM\Dev\DumpValue)#{{id}} (4) {
+  ["type"]=>
+  string(8) "callable"
+  ["name"]=>
+  string(23) "TJM\Dev\Tests\A::stat()"
+  ["file"]=>
+  string(51) "{{testsPath}}/inc/A.php:9-11"
+  ["content"]=>
+  string(63) "	static public function stat($val){
+		echo 'stat: ' . $val;
+	}
+"
+}

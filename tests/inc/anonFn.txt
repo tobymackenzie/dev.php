@@ -1,0 +1,11 @@
+object(TJM\Dev\DumpValue)#{{id}} (4) {
+  ["type"]=>
+  string(8) "callable"
+  ["name"]=>
+  string(7) "Closure"
+  ["file"]=>
+  string(53) "{{testsPath}}/inc/anonFn.php:2"
+  ["content"]=>
+  string(49) "return function(){ var_dump(func_get_args()); };
+"
+}
