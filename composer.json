@@ -10,6 +10,7 @@
 	]
 	,"license": "0BSD"
 	,"autoload": {
+		"files": ["src/global.php"],
 		"psr-4": {
 			"TJM\\Dev\\": "src",
 			"TJM\\": "src"
