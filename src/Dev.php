@@ -1,8 +1,15 @@
 <?php
 namespace TJM;
+use Symfony\Component\VarDumper\Cloner\VarCloner;
+use Symfony\Component\VarDumper\Dumper\CliDumper;
+use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use TJM\Dev\DumpValue;
 
 class Dev{
+	static public $directDump;
+	static protected $dumper;
+	static protected $vCloner;
+
 	static public function getDump(){
 		$result = '';
 		foreach(func_get_args() as $arg){
@@ -60,19 +67,33 @@ class Dev{
 					]);
 				}
 			}
-			ob_start();
-			if(function_exists('dump')){
+			if(static::$directDump && function_exists('dump')){
 				dump($outputArg);
+			}elseif(class_exists(CliDumper::class)){
+				if(empty(static::$dumper)){
+					static::$dumper = PHP_SAPI ? new CliDumper() : new HtmlDumper();
+				}
+				if(empty(static::$vCloner)){
+					static::$vCloner = new VarCloner();
+				}
+				$result .= static::$dumper->dump(static::$vCloner->cloneVar($outputArg), true);
 			}else{
+				ob_start();
 				var_dump($outputArg);
+				$result .= ob_get_contents();
+				ob_end_clean();
 			}
-			$result .= ob_get_contents();
-			ob_end_clean();
 		}
 		return $result;
 	}
 	static public function dump(){
-		echo call_user_func_array(Dev::class . '::getDump', func_get_args());
+		if(!isset(static::$directDump)){
+			static::$directDump = true;
+			call_user_func_array(Dev::class . '::getDump', func_get_args());
+			unset(static::$directDump);
+		}else{
+			echo call_user_func_array(Dev::class . '::getDump', func_get_args());
+		}
 	}
 	static private function getLineString($start, $end){
 		if($start === $end){

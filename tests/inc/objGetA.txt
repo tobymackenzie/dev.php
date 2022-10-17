@@ -1,13 +1,10 @@
-object(TJM\Dev\DumpValue)#{{id}} (4) {
-  ["type"]=>
-  string(8) "callable"
-  ["name"]=>
-  string(23) "TJM\Dev\Tests\A->getA()"
-  ["file"]=>
-  string(50) "{{testsPath}}/inc/A.php:6-8"
-  ["content"]=>
-  string(47) "	public function getA(){
-		return $this->a;
-	}
-"
+TJM\Dev\DumpValue {#{{id}}
+  +"type": "callable"
+  +"name": "TJM\Dev\Tests\A->getA()"
+  +"file": "{{testsPath}}/inc/A.php:6-8"
+  +"content": """
+    \tpublic function getA(){\n
+    \t\treturn $this->a;\n
+    \t}\n
+    """
 }

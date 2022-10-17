@@ -13,7 +13,7 @@ class DumpTest extends TestCase{
 
 	//==class
 	public function testDumpBuiltInClass(){
-		$this->assertEquals('string(15) "ReflectionClass"' . PHP_EOL, Dev::getDump(\ReflectionClass::class));
+		$this->assertEquals('"ReflectionClass"' . PHP_EOL, Dev::getDump(\ReflectionClass::class));
 	}
 	public function testDumpClass(){
 		$this->runDumpValueTest(A::class, __DIR__ . '/inc/a.txt');
@@ -27,7 +27,7 @@ class DumpTest extends TestCase{
 
 	//==function
 	public function testBuiltInFunction(){
-		$this->assertEquals('string(8) "var_dump"' . PHP_EOL, Dev::getDump('var_dump'));
+		$this->assertEquals('"var_dump"' . PHP_EOL, Dev::getDump('var_dump'));
 	}
 	public function testAnonymousFunction(){
 		$this->runDumpValueTest(require(__DIR__ . '/inc/anonFn.php'), __DIR__ . '/inc/anonFn.txt');
@@ -40,17 +40,17 @@ class DumpTest extends TestCase{
 
 	//==scalar
 	public function testDumpBool(){
-		$this->assertEquals("bool(true)\n", Dev::getDump(true));
-		$this->assertEquals("bool(false)\n", Dev::getDump(false));
+		$this->assertEquals("true\n", Dev::getDump(true));
+		$this->assertEquals("false\n", Dev::getDump(false));
 	}
 	public function testDumpInt(){
-		$this->assertEquals("int(-123)\n", Dev::getDump(-123));
-		$this->assertEquals("int(0)\n", Dev::getDump(0));
-		$this->assertEquals("int(123)\n", Dev::getDump(123));
+		$this->assertEquals("-123\n", Dev::getDump(-123));
+		$this->assertEquals("0\n", Dev::getDump(0));
+		$this->assertEquals("123\n", Dev::getDump(123));
 	}
 	public function testDumpString(){
-		$this->assertEquals("string(3) \"foo\"\n", Dev::getDump('foo'));
-		$this->assertEquals("string(6) \"return\"\n", Dev::getDump('return'));
+		$this->assertEquals('"foo"' . PHP_EOL, Dev::getDump('foo'));
+		$this->assertEquals('"return"' . PHP_EOL, Dev::getDump('return'));
 	}
 
 	/*=====
@@ -58,7 +58,7 @@ class DumpTest extends TestCase{
 	=====*/
 	protected function runDumpValueTest($input, $expectFile){
 		$dump = Dev::getDump($input);
-		preg_match('/^object\(TJM\\\Dev\\\DumpValue\)#([\d]+)/', $dump, $matches);
+		preg_match('/^TJM\\\Dev\\\DumpValue \{#([\d]+)/', $dump, $matches);
 		$expect = file_get_contents($expectFile);
 		foreach([
 			'{{id}}'=> $matches[1],

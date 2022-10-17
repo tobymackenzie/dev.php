@@ -1,6 +1,4 @@
-array(2) {
-  [0]=>
-  string(15) "TJM\Dev\Tests\A"
-  [1]=>
-  string(4) "getA"
-}
+array:2 [
+  0 => "TJM\Dev\Tests\A"
+  1 => "getA"
+]
