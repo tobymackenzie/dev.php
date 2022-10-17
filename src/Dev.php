@@ -90,7 +90,7 @@ class Dev{
 		if(!isset(static::$directDump)){
 			static::$directDump = true;
 			call_user_func_array(Dev::class . '::getDump', func_get_args());
-			unset(static::$directDump);
+			static::$directDump = null;
 		}else{
 			echo call_user_func_array(Dev::class . '::getDump', func_get_args());
 		}
