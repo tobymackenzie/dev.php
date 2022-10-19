@@ -25,6 +25,40 @@ class DumpTest extends TestCase{
 		$this->assertEquals(file_get_contents(__DIR__ . '/inc/AgetA.txt'), Dev::getDump([A::class, 'getA']));
 	}
 
+	//==array
+	public function testDumpArray(){
+		$this->assertEquals(file_get_contents(__DIR__ . '/inc/array.txt'), Dev::getDump([
+			'zero',
+			'one',
+			'two',
+			'three',
+			'four',
+			'five',
+			'six',
+			'seven',
+			'eight',
+			'nine',
+			'ten',
+		]));
+	}
+	public function testDumpMapArray(){
+		$this->assertEquals(file_get_contents(__DIR__ . '/inc/mapArray.txt'), Dev::getDump([
+			'a'=> 'apple',
+			'b'=> 'banana',
+			'c'=> 'clam',
+			'd'=> 'date',
+			'e'=> 'elephant',
+			'f'=> 'fungi',
+			'g'=> 'grape',
+			'h'=> 'hippo',
+			'i'=> 'iguana',
+			'j'=> 'jelly fish',
+			'k'=> 'koala',
+			'l'=> 'lizard',
+			'm'=> 'monkey',
+		]));
+	}
+
 	//==function
 	public function testBuiltInFunction(){
 		$this->assertEquals('"var_dump"' . PHP_EOL, Dev::getDump('var_dump'));
