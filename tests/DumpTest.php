@@ -6,8 +6,7 @@ use TJM\Dev\DumpValue;
 use PHPUnit\Framework\TestCase;
 
 class DumpTest extends TestCase{
-	// public function setUp(){ //-! uncomment for PHP < 7.0
-	public function setUp(): void{
+	static public function setUpBeforeClass(): void{
 		require_once(__DIR__ . '/inc/A.php');
 	}
 
