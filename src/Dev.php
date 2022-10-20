@@ -10,9 +10,9 @@ class Dev{
 	static protected $dumper;
 	static protected $vCloner;
 
-	static public function getDump(){
+	static public function getDump(...$args){
 		$result = '';
-		foreach(func_get_args() as $arg){
+		foreach($args as $arg){
 			$outputArg = $arg;
 			if(is_string($arg) && class_exists($arg)){
 				$data = new \ReflectionClass($arg);
@@ -86,13 +86,13 @@ class Dev{
 		}
 		return $result;
 	}
-	static public function dump(){
+	static public function dump(...$args){
 		if(!isset(static::$directDump)){
 			static::$directDump = true;
-			call_user_func_array(Dev::class . '::getDump', func_get_args());
+			static::getDump(...$args);
 			static::$directDump = null;
 		}else{
-			echo call_user_func_array(Dev::class . '::getDump', func_get_args());
+			static::getDump(...$args);
 		}
 	}
 	static private function getLineString($start, $end){
