@@ -7,9 +7,13 @@
 			,"email": "public@tobymackenzie.com"
 			,"homepage": "https://www.tobymackenzie.com"
 		}
-	]
-	,"license": "0BSD"
-	,"autoload": {
+	],
+	"license": [
+		"0BSD",
+		"CC0-1.0",
+		"Unlicense"
+	],
+	"autoload": {
 		"files": ["src/global.php"],
 		"psr-4": {
 			"TJM\\Dev\\": "src",
