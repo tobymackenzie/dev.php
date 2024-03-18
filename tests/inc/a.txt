@@ -1,8 +1,5 @@
 TJM\Dev\DumpValue {#{{id}}
-  +"type": "class"
-  +"name": "TJM\Dev\Tests\A"
-  +"file": "{{testsPath}}/inc/A.php:4-12"
-  +"content": """
+  +content: """
     class A{\n
     \tprotected $a = 'aye';\n
     \tpublic function getA(){\n
@@ -13,4 +10,7 @@ TJM\Dev\DumpValue {#{{id}}
     \t}\n
     }\n
     """
+  +file: "{{testsPath}}/inc/A.php:4-12"
+  +name: "TJM\Dev\Tests\A"
+  +type: "class"
 }

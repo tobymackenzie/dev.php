@@ -1,10 +1,10 @@
 TJM\Dev\DumpValue {#{{id}}
-  +"type": "callable"
-  +"name": "TJM\Dev\Tests\A::stat()"
-  +"file": "{{testsPath}}/inc/A.php:9-11"
-  +"content": """
+  +content: """
     \tstatic public function stat($val){\n
     \t\techo 'stat: ' . $val;\n
     \t}\n
     """
+  +file: "{{testsPath}}/inc/A.php:9-11"
+  +name: "TJM\Dev\Tests\A::stat()"
+  +type: "callable"
 }

@@ -1,6 +1,6 @@
 TJM\Dev\DumpValue {#{{id}}
-  +"type": "callable"
-  +"name": "Closure"
-  +"file": "{{testsPath}}/inc/anonFn.php:2"
-  +"content": "return function(){ var_dump(func_get_args()); };\n"
+  +content: "return function(){ var_dump(func_get_args()); };\n"
+  +file: "{{testsPath}}/inc/anonFn.php:2"
+  +name: "Closure"
+  +type: "callable"
 }
