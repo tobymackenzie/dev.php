@@ -20,6 +20,11 @@
 			"TJM\\": "src"
 		}
 	}
+	,"autoload-dev": {
+		"psr-4": {
+			"TJM\\Dev\\Tests\\": "tests"
+		}
+	}
 	,"require": {
 		"php": ">=5.4",
 		"symfony/var-dumper": "*"
