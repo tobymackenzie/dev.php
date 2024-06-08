@@ -15,10 +15,8 @@
 	],
 	"autoload": {
 		"files": ["src/global.php"],
-		"psr-4": {
-			"TJM\\Dev\\": "src",
-			"TJM\\": "src"
-		}
+		"classmap": ["src/Dev.php"],
+		"psr-4": {"TJM\\Dev\\": "src"}
 	}
 	,"autoload-dev": {
 		"psr-4": {
