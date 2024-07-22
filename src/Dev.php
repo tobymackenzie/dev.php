@@ -12,9 +12,27 @@ class Dev{
 
 	static public function getDump(...$args){
 		$result = '';
+		//--if no args add special arg to trigger special output
+		if(func_num_args() === 0){
+			$args[0] = null;
+		}
 		foreach($args as $arg){
+			//--default output
 			$outputArg = $arg;
-			if(is_string($arg) && class_exists($arg)){
+			//--special output for no arg
+			if(func_num_args() === 0){
+				$trace = debug_backtrace();
+				$thisDir = __DIR__;
+				$dirLength = strlen(__DIR__);
+				while($trace){
+					$traceI = array_shift($trace);
+					if(substr($traceI['file'], 0, $dirLength) !== __DIR__){
+						break;
+					}
+				}
+				$outputArg = $traceI['file'] . ':' . $traceI['line'];
+			//--nice output for user defined class
+			}elseif(is_string($arg) && class_exists($arg)){
 				$data = new \ReflectionClass($arg);
 				if($data->isUserDefined()){
 					$content = '';
@@ -33,6 +51,7 @@ class Dev{
 						'content'=> $content,
 					]);
 				}
+			//--nice output for user defined callable
 			}elseif(is_callable($arg)){
 				if(is_array($arg)){
 					$data = is_object($arg) ? new \ReflectionObject($arg[0]) : new \ReflectionClass($arg[0]);

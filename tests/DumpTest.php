@@ -10,6 +10,11 @@ class DumpTest extends TestCase{
 		require_once(__DIR__ . '/inc/A.php');
 	}
 
+	//==empty
+	public function testDumpNothing(){
+		$this->assertEquals('"' . __FILE__ . ":15\"\n", Dev::getDump());
+	}
+
 	//==class
 	public function testDumpBuiltInClass(){
 		$this->assertEquals('"ReflectionClass"' . PHP_EOL, Dev::getDump(\ReflectionClass::class));
