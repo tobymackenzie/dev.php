@@ -4,12 +4,16 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use TJM\Dev\DumpValue;
+use TJM\Dev\Srv;
 
 class Dev{
 	static public $directDump;
 	static protected $dumper;
 	static protected $vCloner;
 
+	/*=====
+	==dump
+	=====*/
 	static public function getDump(...$args){
 		$result = '';
 		//--if no args add special arg to trigger special output
@@ -120,5 +124,14 @@ class Dev{
 		}else{
 			return "{$start}-{$end}";
 		}
+	}
+
+	/*=====
+	==serve
+	=====*/
+	static public function srv($opts = []){
+		$srv = new Srv($opts);
+		$srv->run();
+		return $srv;
 	}
 }

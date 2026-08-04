@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+TJM\Dev::srv(isset($argv[1]) ? $argv[1] : __DIR__ . '/../tests/www');
